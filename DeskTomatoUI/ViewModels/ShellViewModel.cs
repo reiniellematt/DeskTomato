@@ -9,5 +9,13 @@ namespace DeskTomatoUI.ViewModels
 {
     public class ShellViewModel : Conductor<Screen>
     {
+        private IWindowManager _windowManager;
+
+        public ShellViewModel(IWindowManager windowManager)
+        {
+            _windowManager = windowManager;
+
+            ActivateItem(new MainTimerViewModel());
+        }
     }
 }

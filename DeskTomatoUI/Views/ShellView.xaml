@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:DeskTomatoUI.Views"
         mc:Ignorable="d"
         Title="ShellView" Height="420" Width="720">
-    <Grid>
-        
-    </Grid>
+    <ContentControl x:Name="ActiveItem"/>
 </Window>
