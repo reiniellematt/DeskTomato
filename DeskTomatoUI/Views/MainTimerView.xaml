@@ -11,7 +11,18 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Label x:Name="Time" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100"/>
+        <Label x:Name="Time" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource TimerStyle}"/>
+
+        <Button x:Name="Start" Grid.Row="1" Grid.Column="0" Style="{StaticResource StartButtonStyle}"/>
+
+        <Button x:Name="Reset" Grid.Row="1" Grid.Column="1" Style="{StaticResource ResetButtonStyle}"/>
+
+        <Button x:Name="Stop" Grid.Row="1" Grid.Column="2" Style="{StaticResource StopButtonStyle}"/>
     </Grid>
 </UserControl>

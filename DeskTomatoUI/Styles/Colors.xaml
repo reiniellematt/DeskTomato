@@ -11,22 +11,28 @@
     <Color x:Key="ResetColor">#FF8C00</Color>
     <SolidColorBrush x:Key="ResetColorBrush" Color="{StaticResource ResetColor}"/>
 
-    <Style x:Key="BaseColorStyle" TargetType="{x:Type Control}" BasedOn="{StaticResource BaseStyle}">
+    <Style x:Key="TimerStyle" TargetType="{x:Type Label}" BasedOn="{StaticResource TimerFontStyle}">
         <Setter Property="Foreground" Value="White"/>
     </Style>
 
-    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseColorStyle}"/>
-
-    <Style x:Key="StartButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="StartButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonFontStyle}">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Background" Value="{StaticResource StartColorBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Content" Value="START"/>
     </Style>
 
-    <Style x:Key="StopButtonStyle" TargetType="{x:Type Button}">
+    <Style x:Key="StopButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonFontStyle}">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Background" Value="{StaticResource StopColorBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Content" Value="STOP"/>
     </Style>
-            
-    <Style x:Key="ResetButtonStyle" TargetType="{x:Type Button}">
+
+    <Style x:Key="ResetButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonFontStyle}">
         <Setter Property="Background" Value="{StaticResource ResetColorBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Content" Value="RESET"/>
     </Style>
 
 </ResourceDictionary>
