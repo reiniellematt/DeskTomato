@@ -27,7 +27,10 @@ namespace DeskTomatoUI
         {
             _container.Singleton<IWindowManager, WindowManager>();
             _container.Singleton<IEventAggregator, EventAggregator>();
+
             _container.RegisterPerRequest(typeof(ShellViewModel), null, typeof(ShellViewModel));
+            _container.RegisterPerRequest(typeof(MainTimerViewModel), null, typeof(MainTimerViewModel));
+            _container.RegisterPerRequest(typeof(BreakTimerViewModel), null, typeof(BreakTimerViewModel));
         }
 
         protected override object GetInstance(Type serviceType, string key)

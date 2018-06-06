@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace DeskTomatoUI.ViewModels
 {
-    public class ShellViewModel : Conductor<Screen>
+    class BreakTimerViewModel : Screen
     {
-        public ShellViewModel()
-        {
-            ActivateItem(IoC.Get<MainTimerViewModel>());
-        }
+
     }
 }

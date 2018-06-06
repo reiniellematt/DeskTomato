@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DeskTomatoUI.Styles">
+
+    <Color x:Key="StartColor">#00CC6A</Color>
+    <SolidColorBrush x:Key="StartColorBrush" Color="{StaticResource StartColor}"/>
+
+    <Color x:Key="StopColor">#FF4343</Color>
+    <SolidColorBrush x:Key="StopColorBrush" Color="{StaticResource StopColor}"/>
+
+    <Color x:Key="ResetColor">#FF8C00</Color>
+    <SolidColorBrush x:Key="ResetColorBrush" Color="{StaticResource ResetColor}"/>
+
+    <Style x:Key="BaseColorStyle" TargetType="{x:Type Control}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseColorStyle}"/>
+
+    <Style x:Key="StartButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource StartColorBrush}"/>
+    </Style>
+
+    <Style x:Key="StopButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource StopColorBrush}"/>
+    </Style>
+            
+    <Style x:Key="ResetButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource ResetColorBrush}"/>
+    </Style>
+
+</ResourceDictionary>

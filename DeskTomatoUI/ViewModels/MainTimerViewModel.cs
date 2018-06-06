@@ -9,23 +9,15 @@ namespace DeskTomatoUI.ViewModels
 {
     public class MainTimerViewModel : Screen
     {
-        private int _minutes = 25, _seconds = 25;
-
-        private string _time;
+        private int _minutes = 25, _seconds = 0;
 
         public string Time
         {
-            get { return _time; }
-            set
-            {
-                _time = value;
-                NotifyOfPropertyChange(() => Time);
-            }
+            get { return string.Format("{0:00}:{1:00}", _minutes, _seconds); }
         }
 
         public MainTimerViewModel()
         {
-            Time = $"{ _minutes }:{ _seconds }";
         }
     }
 }
