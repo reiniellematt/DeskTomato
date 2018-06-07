@@ -11,7 +11,7 @@ namespace DeskTomatoUI.ViewModels
     {
         private CustomTimer _timer;
 
-        private int _minutes = 0, _seconds = 2;
+        private int _minutes = 25, _seconds = 0;
 
         public string Time
         {
