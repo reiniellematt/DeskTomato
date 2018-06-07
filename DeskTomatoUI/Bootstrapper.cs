@@ -31,6 +31,7 @@ namespace DeskTomatoUI
             _container.RegisterPerRequest(typeof(ShellViewModel), null, typeof(ShellViewModel));
             _container.RegisterPerRequest(typeof(MainTimerViewModel), null, typeof(MainTimerViewModel));
             _container.RegisterPerRequest(typeof(BreakTimerViewModel), null, typeof(BreakTimerViewModel));
+            _container.RegisterPerRequest(typeof(EditViewModel), null, typeof(EditViewModel));
         }
 
         protected override object GetInstance(Type serviceType, string key)

@@ -74,10 +74,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\BreakTimerViewModel.cs" />
+    <Compile Include="ViewModels\EditViewModel.cs" />
     <Compile Include="ViewModels\MainTimerViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\BreakTimerView.xaml.cs">
       <DependentUpon>BreakTimerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditView.xaml.cs">
+      <DependentUpon>EditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainTimerView.xaml.cs">
       <DependentUpon>MainTimerView.xaml</DependentUpon>
@@ -125,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BreakTimerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
