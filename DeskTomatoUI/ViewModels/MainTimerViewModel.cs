@@ -1,18 +1,15 @@
 ﻿using Caliburn.Micro;
-using Notifications.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace DeskTomatoUI.ViewModels
 {
     public class MainTimerViewModel : Screen
     {
         private CustomTimer _timer;
-        private NotificationManager _notification;
 
         private int _minutes = 25, _seconds = 0;
 
@@ -86,9 +83,6 @@ namespace DeskTomatoUI.ViewModels
                 _timer.Stop();
                 NotifyOfPropertyChange(() => CanStop);
                 NotifyOfPropertyChange(() => CanReset);
-
-                _notification = new NotificationManager();
-                _notification.Show(new NotificationContent { Title = "Desk Tomato", Message = "Timer finished!", Type = NotificationType.Information });
             }
 
             NotifyOfPropertyChange(() => Time);
