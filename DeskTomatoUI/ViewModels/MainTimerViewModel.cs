@@ -11,7 +11,7 @@ namespace DeskTomatoUI.ViewModels
     {
         private CustomTimer _timer;
 
-        private int _minutes = 25, _seconds = 0;
+        private int _minutes = 0, _seconds = 2;
 
         public string Time
         {
@@ -21,14 +21,14 @@ namespace DeskTomatoUI.ViewModels
         {
             get
             {
-                return !_timer.IsTimerRunning();
+                return !_timer.IsTimerRunning() && (_minutes > 0 || _seconds > 0);
             }
         }
         public bool CanStop
         {
             get
             {
-                return _timer.IsTimerRunning();
+                return _timer.IsTimerRunning() && (_minutes > 0 || _seconds > 0);
             }
         }
         public bool CanReset
@@ -65,6 +65,7 @@ namespace DeskTomatoUI.ViewModels
             _minutes = 25;
             _seconds = 0;
             NotifyOfPropertyChange(() => Time);
+            NotifyOfPropertyChange(() => CanStart);
         }
 
         private void TimerTick(object sender, EventArgs e)
@@ -75,7 +76,13 @@ namespace DeskTomatoUI.ViewModels
             {
                 _minutes--;
                 _seconds = 59;
-                NotifyOfPropertyChange(() => Time);
+            }
+
+            if (_minutes == 0 && _seconds == 0)
+            {
+                _timer.Stop();
+                NotifyOfPropertyChange(() => CanStop);
+                NotifyOfPropertyChange(() => CanReset);
             }
 
             NotifyOfPropertyChange(() => Time);

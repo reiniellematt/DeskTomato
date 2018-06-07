@@ -11,7 +11,7 @@ namespace DeskTomatoUI.ViewModels
     {
         public ShellViewModel()
         {
-            ActivateItem(IoC.Get<MainTimerViewModel>());
+            ActivateItem(IoC.Get<BreakTimerViewModel>());
         }
     }
 }

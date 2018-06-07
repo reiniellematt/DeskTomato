@@ -7,6 +7,9 @@ using System.Windows.Threading;
 
 namespace DeskTomatoUI
 {
+    /// <summary>
+    /// A class that still implements DispatchTimer but handles most the code that will be repeated throughout the app.
+    /// </summary>
     public class CustomTimer
     {
         private DispatcherTimer _timer;
@@ -14,6 +17,10 @@ namespace DeskTomatoUI
         private TimeSpan _interval;
         private bool _isTimerRunning;
 
+        /// <summary>
+        /// Creates a new CustomTimer
+        /// </summary>
+        /// <param name="timerTick">The method to invoke everytime the timer elapses at the given interval.</param>
         public CustomTimer(EventHandler timerTick)
         {
             _interval = TimeSpan.FromMilliseconds(1000);
