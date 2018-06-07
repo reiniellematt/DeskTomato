@@ -12,7 +12,7 @@ namespace DeskTomatoUI.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
 
-        private string _minutes = "5";
+        private string _minutes = "0";
         private string _seconds = "0";
 
         public string Minutes
@@ -37,6 +37,7 @@ namespace DeskTomatoUI.ViewModels
         public EditViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
+            _eventAggregator.Subscribe(this);
         }
 
         public void Ok()
@@ -49,8 +50,10 @@ namespace DeskTomatoUI.ViewModels
                 return;
             }
 
-            _eventAggregator.PublishOnUIThread(Minutes);
-            _eventAggregator.PublishOnUIThread(Seconds);
+            string[] values = { Minutes, Seconds };
+
+            _eventAggregator.PublishOnUIThread(values);
+
             TryClose();
         }
 
@@ -79,6 +82,11 @@ namespace DeskTomatoUI.ViewModels
             if (seconds > 59)
             {
                 return "The seconds field cannot be greater than 59!";
+            }
+
+            if (minutes > 59)
+            {
+                return "The hours field cannot be greater than 59!";
             }
 
             return output;

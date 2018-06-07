@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace DeskTomatoUI.ViewModels
 {
-    class BreakTimerViewModel : Screen
+    internal class BreakTimerViewModel : Screen, IHandle<string[]>
     {
-        private IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
+        private readonly IWindowManager _windowManager;
 
         private double _minutes = 5, _seconds = 0;
 
@@ -18,9 +19,25 @@ namespace DeskTomatoUI.ViewModels
             get { return string.Format("{0:00}:{1:00}", _minutes, _seconds); }
         }
 
-        public BreakTimerViewModel(IEventAggregator eventAggregator)
+        public BreakTimerViewModel(IEventAggregator eventAggregator, IWindowManager windowManager)
         {
             _eventAggregator = eventAggregator;
+            _windowManager = windowManager;
+        }
+
+        public void Edit()
+        {
+            _eventAggregator.Subscribe(this);
+            _windowManager.ShowDialog(IoC.Get<EditViewModel>());
+        }
+
+        public void Handle(string[] message)
+        {
+            _minutes = double.Parse(message[0]);
+            _seconds = double.Parse(message[1]);
+            NotifyOfPropertyChange(() => Time);
+
+            _eventAggregator.Unsubscribe(this);
         }
     }
 }
