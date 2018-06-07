@@ -17,6 +17,27 @@ namespace DeskTomatoUI.ViewModels
         {
             get { return string.Format("{0:00}:{1:00}", _minutes, _seconds); }
         }
+        public bool CanStart
+        {
+            get
+            {
+                return !_timer.IsTimerRunning();
+            }
+        }
+        public bool CanStop
+        {
+            get
+            {
+                return _timer.IsTimerRunning();
+            }
+        }
+        public bool CanReset
+        {
+            get
+            {
+                return !_timer.IsTimerRunning();
+            }
+        }
 
         public MainTimerViewModel()
         {
@@ -28,6 +49,7 @@ namespace DeskTomatoUI.ViewModels
             _timer.Start();
             NotifyOfPropertyChange(() => CanStart);
             NotifyOfPropertyChange(() => CanStop);
+            NotifyOfPropertyChange(() => CanReset);
         }
 
         public void Stop()
@@ -35,22 +57,14 @@ namespace DeskTomatoUI.ViewModels
             _timer.Stop();
             NotifyOfPropertyChange(() => CanStart);
             NotifyOfPropertyChange(() => CanStop);
+            NotifyOfPropertyChange(() => CanReset);
         }
 
-        public bool CanStart
+        public void Reset()
         {
-            get
-            {
-                return !_timer.IsTimerRunning();
-            }
-        }
-
-        public bool CanStop
-        {
-            get
-            {
-                return _timer.IsTimerRunning();
-            }
+            _minutes = 25;
+            _seconds = 0;
+            NotifyOfPropertyChange(() => Time);
         }
 
         private void TimerTick(object sender, EventArgs e)
