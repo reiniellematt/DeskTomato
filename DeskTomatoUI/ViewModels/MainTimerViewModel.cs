@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPFNotification.Core.Configuration;
+using WPFNotification.Model;
+using WPFNotification.Services;
 
 namespace DeskTomatoUI.ViewModels
 {
@@ -83,6 +86,8 @@ namespace DeskTomatoUI.ViewModels
                 _timer.Stop();
                 NotifyOfPropertyChange(() => CanStop);
                 NotifyOfPropertyChange(() => CanReset);
+
+                _timer.DisplayTimerFinished();
             }
 
             NotifyOfPropertyChange(() => Time);
