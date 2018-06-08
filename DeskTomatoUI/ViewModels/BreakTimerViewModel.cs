@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using Notifications.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,6 @@ namespace DeskTomatoUI.ViewModels
         private readonly IWindowManager _windowManager;
 
         private CustomTimer _timer;
-        private NotificationManager _notification;
         private double _minutes = 5, _seconds = 0;
         private double _newMinutes = 5, _newSeconds = 0;
 
@@ -110,9 +108,6 @@ namespace DeskTomatoUI.ViewModels
                 _timer.Stop();
                 NotifyOfPropertyChange(() => CanStop);
                 NotifyOfPropertyChange(() => CanReset);
-
-                _notification = new NotificationManager();
-                _notification.Show(new NotificationContent { Title = "Desk Tomato", Message = "Break time finished!", Type = NotificationType.Information });
             }
 
             NotifyOfPropertyChange(() => Time);
