@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using WPFNotification.Core.Configuration;
+using WPFNotification.Model;
+using WPFNotification.Services;
 
 namespace DeskTomatoUI
 {
@@ -12,10 +15,14 @@ namespace DeskTomatoUI
     /// </summary>
     public class CustomTimer
     {
+        private NotificationDialogService _dialogService;
         private DispatcherTimer _timer;
         private EventHandler _timerTick;
         private TimeSpan _interval;
         private bool _isTimerRunning;
+
+        private Notification notification = new Notification { Title = "Desk Tomato", Message = "Timer Finished" };
+        private NotificationConfiguration configuration = new NotificationConfiguration(TimeSpan.FromSeconds(3), width: 250, height: 150, templateName: null, notificationFlowDirection: null);
 
         /// <summary>
         /// Creates a new CustomTimer
@@ -47,5 +54,12 @@ namespace DeskTomatoUI
         {
             return _isTimerRunning;
         }
+
+        public void DisplayTimerFinished()
+        {
+            _dialogService = new NotificationDialogService();
+            _dialogService.ShowNotificationWindow(notification, configuration);
+        }
+
     }
 }

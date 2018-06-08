@@ -108,6 +108,8 @@ namespace DeskTomatoUI.ViewModels
                 _timer.Stop();
                 NotifyOfPropertyChange(() => CanStop);
                 NotifyOfPropertyChange(() => CanReset);
+
+                _timer.DisplayTimerFinished();
             }
 
             NotifyOfPropertyChange(() => Time);

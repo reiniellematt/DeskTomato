@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFNotification.Services;
 
 namespace DeskTomatoUI
 {
@@ -27,6 +28,7 @@ namespace DeskTomatoUI
         {
             _container.Singleton<IWindowManager, WindowManager>();
             _container.Singleton<IEventAggregator, EventAggregator>();
+            _container.Singleton<INotificationDialogService, NotificationDialogService>();
 
             _container.RegisterPerRequest(typeof(ShellViewModel), null, typeof(ShellViewModel));
             _container.RegisterPerRequest(typeof(MainTimerViewModel), null, typeof(MainTimerViewModel));
